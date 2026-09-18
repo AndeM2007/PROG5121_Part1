@@ -25,6 +25,7 @@ public class Login {
     }
 
     // Validate Cell Phone Number: Must contain international code (e.g. +27) and valid digits
+    // Validates cell phone format
     public boolean checkCellPhoneNumber(String cellNumber) {
         return cellNumber.startsWith("+27") && cellNumber.length() == 12;
     }
