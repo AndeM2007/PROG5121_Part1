@@ -1,5 +1,7 @@
 package prog5121_part1;
 
+import java.util.regex.Pattern;
+
 public class Login {
     private String username;
     private String password;
@@ -24,10 +26,11 @@ public class Login {
         return hasCapital && hasDigit && hasSpecial;
     }
 
-    // Validate Cell Phone Number: Must contain international code (e.g. +27) and valid digits
-    // Validates cell phone format
+    // Cellphone validation using Regular Expression (Regex)
+    // Attribution: Standard international E.164 phone formatting regex pattern
     public boolean checkCellPhoneNumber(String cellNumber) {
-        return cellNumber.startsWith("+27") && cellNumber.length() == 12;
+        String phoneRegex = "^\\+27[0-9]{9}$";
+        return Pattern.matches(phoneRegex, cellNumber);
     }
 
     // Process Registration
@@ -56,10 +59,10 @@ public class Login {
         return enteredUsername.equals(this.username) && enteredPassword.equals(this.password);
     }
 
-    // Return Login Outcome Message
+    // Return Login Outcome Message (Fixed missing comma after first name)
     public String returnLoginStatus(boolean isLoggedIn) {
         if (isLoggedIn) {
-            return "Welcome " + firstName + " " + lastName + " it is great to see you again.";
+            return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
         }
