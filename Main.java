@@ -31,6 +31,7 @@ public class Main {
             password = input.nextLine();
         }
 
+        // Cell Phone Number Validation Loop
         System.out.print("Enter Cell Phone Number (e.g. +27838968976): ");
         String cellNumber = input.nextLine();
         while (!userLogin.checkCellPhoneNumber(cellNumber)) {
@@ -38,6 +39,7 @@ public class Main {
             System.out.print("Please correct the number and try again: ");
             cellNumber = input.nextLine();
         }
+        System.out.println("Cell phone number successfully added.");
 
         userLogin.registerUser(username, password, firstName, lastName, cellNumber);
 
@@ -55,16 +57,16 @@ public class Main {
             System.out.println(userLogin.returnLoginStatus(loggedIn));
         }
 
-        // --- PART 2: MAIN MENU APPLICATION LOOP ---
+        // --- PART 2: QUICKCHAT APPLICATION LOOP ---
         if (loggedIn) {
-            System.out.println("\nWelcome to EasyKanban");
+            System.out.println("\nWelcome to QuickChat.");
             
             boolean running = true;
             while (running) {
                 System.out.println("\nSelect an option:");
-                System.out.println("1) Option 1: Add tasks");
-                System.out.println("2) Option 2: Show report");
-                System.out.println("3) Option 3: Quit");
+                System.out.println("Option 1) Send Messages");
+                System.out.println("Option 2) Show recently sent messages");
+                System.out.println("Option 3) Quit");
                 System.out.print("Choice: ");
 
                 if (input.hasNextInt()) {
@@ -73,22 +75,69 @@ public class Main {
 
                     switch (choice) {
                         case 1:
-                            System.out.println("Task feature coming soon.");
+                            System.out.print("How many messages would you like to enter? ");
+                            int numMessages = input.nextInt();
+                            input.nextLine(); // Consume newline
+
+                            Message lastMessageObj = null;
+
+                            // Rubric: For loop used to enter set number of messages
+                            for (int i = 0; i < numMessages; i++) {
+                                System.out.println("\n--- Entering Message " + (i + 1) + " of " + numMessages + " ---");
+                                
+                                System.out.print("Enter Recipient Cell Number (+27...): ");
+                                String recipient = input.nextLine();
+
+                                System.out.print("Enter Message Text: ");
+                                String messageText = input.nextLine();
+
+                                Message msg = new Message(recipient, messageText, i);
+
+                                // Check message length
+                                String lengthCheck = msg.checkMessageLength(messageText);
+                                System.out.println(lengthCheck);
+
+                                if (lengthCheck.equals("Message sent")) {
+                                    System.out.println("\nSelect Send Option:");
+                                    System.out.println("1) Send Message");
+                                    System.out.println("2) Disregard Message");
+                                    System.out.println("3) Store Message to send later");
+                                    System.out.print("Choice: ");
+                                    int sendChoice = input.nextInt();
+                                    input.nextLine(); // Consume newline
+
+                                    String actionStatus = msg.SentMessage(sendChoice);
+                                    System.out.println(actionStatus);
+
+                                    if (sendChoice == 1) {
+                                        System.out.println("\n--- Message Details ---");
+                                        System.out.println(msg.printMessages());
+                                    }
+                                }
+                                lastMessageObj = msg;
+                            }
+
+                            if (lastMessageObj != null) {
+                                System.out.println("\nTotal Messages Sent: " + lastMessageObj.returnTotalMessagess());
+                            }
                             break;
+
                         case 2:
-                            System.out.println("Show report feature coming soon.");
+                            System.out.println("Coming Soon.");
                             break;
+
                         case 3:
-                            System.out.println("Exiting application. Goodbye!");
+                            System.out.println("Exiting QuickChat. Goodbye!");
                             running = false;
                             break;
+
                         default:
-                            System.out.println("Invalid option. Please enter a number between 1 and 3.");
+                            System.out.println("Invalid option. Please enter 1, 2, or 3.");
                             break;
                     }
                 } else {
-                    System.out.println("Invalid input. Please enter a valid number (1-3).");
-                    input.nextLine(); // Clear invalid input
+                    System.out.println("Invalid input. Please enter a number (1-3).");
+                    input.nextLine();
                 }
             }
         }
