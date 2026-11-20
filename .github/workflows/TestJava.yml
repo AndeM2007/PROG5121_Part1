@@ -28,10 +28,9 @@ jobs:
 
     - name: Compile Source and Test Classes
       run: |
-        mkdir -p build/classes build/test/classes
-        javac -d build/classes *.java
-        javac -cp build/classes:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar -d build/test/classes *Test.java
+        mkdir -p build/classes
+        javac -cp lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar -d build/classes *.java
 
     - name: Run JUnit Tests
       run: |
-        java -cp build/classes:build/test/classes:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore prog5121_part1.LoginTest prog5121_part1.MessageTest
+        java -cp build/classes:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore prog5121_part1.LoginTest prog5121_part1.MessageTest
