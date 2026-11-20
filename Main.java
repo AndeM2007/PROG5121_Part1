@@ -1,7 +1,9 @@
 package prog5121_part1;
 
 import java.util.Scanner;
-
+/**
+ * Main QuickChat application integrating User Registration/Login, Messaging, and Part 3 Reports.
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
