@@ -3,7 +3,9 @@ package prog5121_part1;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
-
+/**
+ * Manages individual message properties, 10-digit ID validation, hashing, and JSON file persistence.
+ */
 public class Message {
     private String messageID;
     private int messageNumber;
