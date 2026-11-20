@@ -3,7 +3,9 @@ package prog5121_part1;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+/**
+ * JUnit 4 test suite covering Part 2 messaging logic and Part 3 array reporting operations.
+ */
 public class MessageTest {
     private MessageManager manager;
 
