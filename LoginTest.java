@@ -2,7 +2,9 @@ package prog5121_part1;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+/**
+ * JUnit 4 unit test suite verifying username, password, cell phone, and login status rules.
+ */
 public class LoginTest {
     
     @Test
