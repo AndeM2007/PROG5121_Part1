@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
+/**
+ * Part 3 manager handling parallel message arrays, JSON file reading, searches, hash deletion, and reports.
+ */
 public class MessageManager {
     // Required Part 3 Arrays
     private String[] sentMessages = new String[0];
