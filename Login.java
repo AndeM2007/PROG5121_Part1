@@ -1,7 +1,9 @@
 package prog5121_part1;
 
 import java.util.regex.Pattern;
-
+/**
+ * Handles user registration, regex cell phone validation, and credential authentication.
+ */
 public class Login {
     private String username;
     private String password;
